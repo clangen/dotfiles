@@ -40,8 +40,8 @@ bindsym $mod+Return exec gnome-terminal
 bindsym $mod+Shift+q kill
 
 # brightness
-bindsym XF86MonBrightnessUp exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 5 -steps 1 -time 0
+bindsym XF86MonBrightnessDown exec xbacklight -dec 5 -steps 1 -time 0
 bindsym $mod+F11 exec node ~/.config/i3/brightness/index.js --dec=0.1
 bindsym $mod+F12 exec node ~/.config/i3/brightness/index.js --inc=0.1
 
