@@ -1,26 +1,6 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;==========================================================
-
 [colors]
-;background = ${xrdb:color0:#222}
 background = #282828
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
 foreground = #fbf1c7
 foreground-alt = #555
 primary = #ffb52a
@@ -32,8 +12,6 @@ monitor = ${env:MONITOR:}
 bottom = true
 width = 100%
 height = 24
-;offset-x = 1%
-;offset-y = 1%
 radius = 4.0
 fixed-center = false
 
@@ -43,25 +21,25 @@ foreground = ${colors.foreground}
 line-size = 3
 line-color = #f00
 
-border-size = 1 
+border-size = 0
 border-color = #00000000
 
 padding-left = 0
-padding-right = 0 
+padding-right = 2
 
 module-margin-left = 1
 module-margin-right = 2
 
 font-0 = fixed:pixelsize=9
-font-1 = "Noto Color Emoji:style=Regular:scale=14" 
+font-1 = "Noto Color Emoji:style=Regular:scale=14"
 font-2 = siji:pixelsize=9
 
 modules-left = i3
 #modules-center = mpd
-modules-right = pulseaudio filesystem memory cpu wlan eth temperature date 
+modules-right = pulseaudio filesystem memory cpu wlan eth temperature date
 
 tray-position = right
-tray-padding = 4 
+tray-padding = 4
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
@@ -69,11 +47,8 @@ tray-padding = 4
 
 ;override-redirect = true
 
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
-
-;scroll-up = i3wm-wsnext
-;scroll-down = i3wm-wsprev
+scroll-up = i3wm-wsnext
+scroll-down = i3wm-wsprev
 
 cursor-click = pointer
 cursor-scroll = ns-resize
@@ -81,22 +56,6 @@ cursor-scroll = ns-resize
 [module/xwindow]
 type = internal/xwindow
 label = %title:0:30:...%
-
-[module/xkeyboard]
-type = internal/xkeyboard
-blacklist-0 = num lock
-
-format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-prefix-underline = ${colors.secondary}
-
-label-layout = %layout%
-label-layout-underline = ${colors.secondary}
-
-label-indicator-padding = 2
-label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
-label-indicator-underline = ${colors.secondary}
 
 [module/filesystem]
 type = internal/fs
@@ -137,7 +96,7 @@ index-sort = true
 wrapping-scroll = false
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
+pin-workspaces = true
 
 label-mode-padding = 2
 label-mode-foreground = #000
@@ -164,23 +123,6 @@ label-urgent = %index%
 label-urgent-background = ${module/bspwm.label-urgent-background}
 label-urgent-padding = ${module/bspwm.label-urgent-padding}
 
-; Separator in between workspaces
-; label-separator = |
-
-
-#[module/mpd]
-#type = internal/mpd
-#format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>
-
-#icon-prev = 
-#icon-stop = 
-#icon-play = 
-#icon-pause = 
-#icon-next = 
-
-#label-song-maxlen = 25
-#label-song-ellipsis = true
-
 [module/xbacklight]
 type = internal/xbacklight
 
@@ -206,7 +148,6 @@ card = intel_backlight
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #8ec07c
 label = cpu %percentage:2%%
@@ -214,7 +155,6 @@ label = cpu %percentage:2%%
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #fe8019
 label = mem %percentage_used%%
@@ -247,17 +187,12 @@ interface = eno1
 interval = 3.0
 
 format-connected-underline = #b16286
-format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = ip %local_ip%
 
 format-disconnected =
 label-disconnected = no ip address
 format-disconnected-underline = #fb4934
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
 type = internal/date
@@ -269,11 +204,10 @@ date-alt = " %Y-%m-%d"
 time = %I:%M
 time-alt = %I:%M:%S
 
-format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = #83a598
 
-label = time %time% %date%
+label = time %time%%date%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -296,35 +230,7 @@ bar-volume-foreground-4 = #55aa55
 bar-volume-foreground-5 = #f5a70a
 bar-volume-foreground-6 = #ff5555
 bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
-
-[module/alsa]
-type = internal/alsa
-
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL
-label-volume-foreground = ${root.foreground}
-
-format-muted-prefix = " "
-format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = |
+bar-volume-indicator =
 bar-volume-indicator-font = 2
 bar-volume-fill = ─
 bar-volume-fill-font = 2
@@ -370,7 +276,7 @@ type = internal/temperature
 thermal-zone = 0
 warn-temperature = 60
 
-format = <ramp> <label>
+format = <label>
 format-underline = #fabd2f
 format-warn = <ramp> <label-warn>
 format-warn-underline = ${self.format-underline}
@@ -379,9 +285,9 @@ label = temp %temperature-c%
 label-warn = temp! %temperature-c%
 label-warn-foreground = ${colors.secondary}
 
-ramp-0 = 
-ramp-1 = 
-ramp-2 = 
+ramp-0 =
+ramp-1 =
+ramp-2 =
 ramp-foreground = ${colors.foreground-alt}
 
 [module/powermenu]
