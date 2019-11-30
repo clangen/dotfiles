@@ -1,0 +1,24 @@
+[global_config]
+  inactive_color_offset = 1.0
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child1]]]
+      parent = window0
+      type = Terminal
+    [[[window0]]]
+      parent = ""
+      type = Window
+[plugins]
+[profiles]
+  [[default]]
+    background_darkness = 0.52
+    background_type = transparent
+    cursor_color = "#aaaaaa"
+    custom_command = fish
+    foreground_color = "#ebdbb2"
+    palette = "#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#fbf1c7:#fbf1c7:#cc241d:#98971a:#d79921:#458588:#b16286:#689d6a:#3c3836"
+    scrollback_lines = 5000
+    scrollbar_position = hidden
+    show_titlebar = False
+    use_custom_command = True
